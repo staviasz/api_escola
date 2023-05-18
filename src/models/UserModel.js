@@ -48,7 +48,7 @@ export default class User extends Model {
     );
 
     this.addHook('beforeSave', async (user) => {
-      if (user.passoword) {
+      if (user.senha) {
         user.senha_hash = await bcryptjs.hash(user.senha, 8);
       }
     });
