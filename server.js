@@ -18,7 +18,7 @@ async function testConnection() {
 
 testConnection();
 
-const port = 3000;
+const port = process.env.PORT_APP;
 app.listen(port, () => {
   console.log(port);
 });
