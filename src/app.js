@@ -5,14 +5,14 @@ import helmet from 'helmet';
 
 dotenv.config();
 
-import './src/database';
+import './database';
 
 import express from 'express';
-import homeRouter from './src/routes/homeRoutes';
-import userRouter from './src/routes/userRoutes';
-import tokenRouter from './src/routes/tokenRoutes';
-import alunoRouter from './src/routes/alunoRoutes';
-import imageRouter from './src/routes/imageRoutes';
+import homeRouter from './routes/homeRoutes';
+import userRouter from './routes/userRoutes';
+import tokenRouter from './routes/tokenRoutes';
+import alunoRouter from './routes/alunoRoutes';
+import imageRouter from './routes/imageRoutes';
 
 class App {
   constructor() {
@@ -26,7 +26,7 @@ class App {
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use('/imagesUrl/', express.static(resolve(__dirname, 'uploads')));
+    this.app.use(express.static(resolve(__dirname, 'uploads')));
   }
 
   routes() {
