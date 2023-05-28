@@ -42,3 +42,5 @@ var _appConfig = require('../config/appConfig'); var _appConfig2 = _interopRequi
     this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
   }
 } exports.default = Image;
+
+console.log('app congig = ', _appConfig2.default.url);
