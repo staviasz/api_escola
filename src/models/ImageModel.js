@@ -42,3 +42,5 @@ export default class Image extends Model {
     this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
   }
 }
+
+console.log('app congig = ', appConfig.url);
