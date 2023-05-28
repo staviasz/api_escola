@@ -4,10 +4,10 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        autoIcrement: true,
+        autoIncrement: true,
         primaryKey: true,
       },
-      orininalname: {
+      originalname: {
         type: Sequelize.STRING,
         allowNull: false,
       },
