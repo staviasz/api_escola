@@ -2,7 +2,7 @@ import app from './app';
 
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('escola', 'root', '@Erick888', {
+const sequelize = new Sequelize('escola', 'root', process.env.DATABASE_PASSWORD, {
   host: 'localhost',
   dialect: 'mariadb',
 });
