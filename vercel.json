@@ -1,7 +1,4 @@
 {
-  "projectSettings": {
-    "name": "api-escola"
-  },
   "builds": [
     {
       "src": "./dist/server.js",
