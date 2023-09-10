@@ -2,10 +2,17 @@ import app from './app';
 
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('escola', 'root', process.env.DATABASE_PASSWORD, {
-  host: 'localhost',
-  dialect: 'mariadb',
-});
+const sequelize = new Sequelize(
+  process.env.PGDATABASE,
+  process.env.PGUSER,
+  process.env.PGPASSWORD,
+
+  {
+    host: process.env.PGHOST,
+    dialect: 'postgres',
+    port: process.env.PGPORT,
+  },
+);
 
 async function testConnection() {
   try {

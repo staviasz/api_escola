@@ -1,17 +1,17 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
 import { resolve } from 'path';
-import cors from 'cors';
 
 dotenv.config();
 
 import './database';
 
 import express from 'express';
-import homeRouter from './routes/homeRoutes';
-import userRouter from './routes/userRoutes';
-import tokenRouter from './routes/tokenRoutes';
 import alunoRouter from './routes/alunoRoutes';
+import homeRouter from './routes/homeRoutes';
 import imageRouter from './routes/imageRoutes';
+import tokenRouter from './routes/tokenRoutes';
+import userRouter from './routes/userRoutes';
 
 class App {
   constructor() {
