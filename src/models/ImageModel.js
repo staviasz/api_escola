@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import appConfig from '../config/appConfig';
 
 export default class Image extends Model {
   static init(sequelize) {
@@ -26,7 +25,7 @@ export default class Image extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `${appConfig.url}/images/${this.getDataValue('filename')}`;
+            return `https://api-escola.vercel.app:3000/images/${this.getDataValue('filename')}`;
           },
         },
       },
@@ -42,5 +41,3 @@ export default class Image extends Model {
     this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
   }
 }
-
-console.log('app congig = ', appConfig.url);
