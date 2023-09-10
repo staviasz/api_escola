@@ -25,7 +25,7 @@ export default class Image extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `https://api-escola.vercel.app:3000/images/${this.getDataValue('filename')}`;
+            return `https://api-escola.cyclic.cloud/images/${this.getDataValue('filename')}`;
           },
         },
       },
