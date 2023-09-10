@@ -16,13 +16,7 @@
   ],
   "build": {
     "env": {
-      "PG": "pg",
-      "DATABASE_URL": "postgresql://postgres:WKv3OVpHbyhZ3Ly2rON2@containers-us-west-190.railway.app:5843/railway",
-      "PGDATABASE": "railway",
-      "PGHOST": "containers-us-west-190.railway.app",
-      "PGPASSWORD": "WKv3OVpHbyhZ3Ly2rON2",
-      "PGPORT": "5843",
-      "PGUSER": "postgres"
+      "PG": "pg"
     }
   }
 }
