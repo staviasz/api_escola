@@ -13,20 +13,9 @@ export default class Image extends Model {
             },
           },
         },
-        filename: {
+        cloudinary_url: {
           type: Sequelize.STRING,
-          defaultValue: '',
-          validate: {
-            notEmpty: {
-              msg: 'Campo não pode estar vazio.',
-            },
-          },
-        },
-        url: {
-          type: Sequelize.VIRTUAL,
-          get() {
-            return `https://api-escola.cyclic.cloud/images/${this.getDataValue('filename')}`;
-          },
+          allowNull: true,
         },
       },
       {

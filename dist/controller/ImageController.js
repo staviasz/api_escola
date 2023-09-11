@@ -1,31 +1,31 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _multer = require('multer'); var _multer2 = _interopRequireDefault(_multer);
-
-var _multerConfigs = require('../config/multerConfigs'); var _multerConfigs2 = _interopRequireDefault(_multerConfigs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }/* eslint-disable consistent-return */
+var _cloudinary = require('../config/cloudinary'); var _cloudinary2 = _interopRequireDefault(_cloudinary);
 var _ImageModel = require('../models/ImageModel'); var _ImageModel2 = _interopRequireDefault(_ImageModel);
-
-const upload = _multer2.default.call(void 0, _multerConfigs2.default).single('image');
 
 class ImageController {
   store(req, res) {
-    return upload(req, res, async (err) => {
-      if (err) {
-        return res.status(400).json({ error: [err.code] });
+    if (!req.file) {
+      return res.status(400).json({ error: 'Nenhuma imagem fornecida' });
+    }
+    if (req.file.mimetype !== 'image/png' && req.file.mimetype !== 'image/jpeg') {
+      return res.status(400).json({ error: 'O arquivo precisa ser png ou jpg.' });
+    }
+    _cloudinary2.default.uploader.upload_stream({ resource_type: 'image', folder: 'alunos' }, async (error, result) => {
+      if (error) {
+        return res.status(500).json({ error: 'Error uploading image to Cloudinary' });
       }
+      const imageUrl = result.secure_url;
 
-      try {
-        const { originalname, filename } = req.file;
-        const { aluno_id } = req.body;
-        const image_avatar = await _ImageModel2.default.create({
-          originalname,
-          filename,
-          aluno_id,
-        });
+      const { originalname } = req.file;
+      const { aluno_id } = req.body;
+      const image_avatar = await _ImageModel2.default.create({
+        originalname,
+        cloudinary_url: imageUrl,
+        aluno_id,
+      });
 
-        return res.json(image_avatar);
-      } catch (e) {
-        return res.status(400).json({ error: [e] });
-      }
-    });
+      return res.json(image_avatar);
+    }).end(req.file.buffer);
   }
 }
 

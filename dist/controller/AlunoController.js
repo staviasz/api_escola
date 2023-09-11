@@ -19,7 +19,7 @@ class AlunoController {
       ],
       include: {
         model: _ImageModel2.default,
-        attributes: ['url', 'filename'],
+        attributes: ['cloudinary_url'],
       },
     });
     res.json(alunos);
@@ -60,7 +60,7 @@ class AlunoController {
         ],
         include: {
           model: _ImageModel2.default,
-          attributes: ['url', 'filename'],
+          attributes: ['cloudinary_url'],
         },
       });
       if (!aluno) {

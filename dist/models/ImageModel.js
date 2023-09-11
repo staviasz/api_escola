@@ -13,20 +13,9 @@
             },
           },
         },
-        filename: {
+        cloudinary_url: {
           type: _sequelize2.default.STRING,
-          defaultValue: '',
-          validate: {
-            notEmpty: {
-              msg: 'Campo não pode estar vazio.',
-            },
-          },
-        },
-        url: {
-          type: _sequelize2.default.VIRTUAL,
-          get() {
-            return `https://api-escola.vercel.app:3000/images/${this.getDataValue('filename')}`;
-          },
+          allowNull: true,
         },
       },
       {
