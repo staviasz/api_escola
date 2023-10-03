@@ -1,137 +1,73 @@
-# Documentação da API da Escola
-
 ## Introdução
 
-A API da Escola é uma aplicação desenvolvida para fornecer operações CRUD (Create, Read, Update, Delete) para alunos e usuários, juntamente com a funcionalidade de upload de fotos de perfil. A API é construída utilizando a linguagem de programação JavaScript e o banco de dados MariaDB.
+A API da Escola é uma aplicação desenvolvida para fornecer operações CRUD (Create, Read, Update, Delete) para alunos e usuários, juntamente com a funcionalidade de upload de fotos de perfil. A API é construída utilizando a linguagem de programação JavaScript e o banco de dados Postgresql.
 
-## Funcionalidades
+### Clone do Repositório
 
-### Autenticação
+- Faça um clone do repositório do projeto a partir do repositório remoto.
 
-- **POST /api/login**
-  - Autentica um usuário e retorna um token de acesso.
-  - Parâmetros:
-    - `email`: O email do usuário.
-    - `senha`: A senha do usuário.
+### Instalação das Dependências
 
-### Usuários
+- Execute o comando `npm install` para instalar todas as dependências do projeto.
 
-- **GET /api/usuarios**
-  - Retorna uma lista de todos os usuários.
+### Configuração do Arquivo .env
 
-- **GET /api/usuarios/:id**
-  - Retorna os detalhes de um usuário específico.
-  - Parâmetros:
-    - `id`: O ID do usuário.
+- Crie um arquivo `.env` com base no exemplo fornecido no arquivo `.envExample`.
+- Forneça as informações necessárias para a conexão com o PostgreSQL e Cloudinary.
 
-- **POST /api/usuarios**
-  - Cria um novo usuário.
-  - Parâmetros:
-    - `nome`: O nome do usuário.
-    - `email`: O email do usuário.
-    - `senha`: A senha do usuário.
+### Conexão com o PostgreSQL
 
-- **PUT /api/usuarios/:id**
-  - Atualiza os detalhes de um usuário específico.
-  - Parâmetros:
-    - `id`: O ID do usuário.
-    - `nome`: Novo nome do usuário.
-    - `email`: Novo email do usuário.
-    - `senha`: Nova senha do usuário.
+- Certifique-se de que o PostgreSQL está instalado e em execução na sua máquina ou servidor.
+- Verifique as configurações de conexão no arquivo `.env`.
 
-- **DELETE /api/usuarios/:id**
-  - Exclui um usuário específico.
-  - Parâmetros:
-    - `id`: O ID do usuário.
+### Configuração do Cloudinary
 
-### Alunos
+- Crie uma conta no Cloudinary (se ainda não tiver uma).
+- Obtenha as credenciais necessárias (API Key, API Secret, Cloud Name) e configure no arquivo `.env`.
 
-- **GET /api/alunos**
-  - Retorna uma lista de todos os alunos.
+### Execução das Migrações do Sequelize
 
-- **GET /api/alunos/:id**
-  - Retorna os detalhes de um aluno específico.
-  - Parâmetros:
-    - `id`: O ID do aluno.
+- Execute o comando `npx sequelize-cli db:migrate` para aplicar as migrações e criar as tabelas no banco de dados.
 
-- **POST /api/alunos**
-  - Cria um novo aluno.
-  - Parâmetros:
-    - `nome`: O nome do aluno.
-    - `idade`: A idade do aluno.
-    - `email`: O email do aluno.
-    - `foto`: Foto de perfil do aluno (upload usando o Multer).
+## Rota /alunos
 
-- **PUT /api/alunos/:id**
-  - Atualiza os detalhes de um aluno específico.
-  - Parâmetros:
-    - `id`: O ID do aluno.
-    - `nome`: Novo nome do aluno.
-    - `sobrenome`: Novo sobrenome do aluno.
-    - `idade`: Nova idade do aluno.
-    - `email`: Novo email do aluno.
-    - `altura`: Nova altura do aluno.
-    - `peso`: Novo peso do aluno.
-    - `foto`: Nova foto de perfil do aluno (upload usando o Multer).
+- **GET (/)**
+  - *Descrição:* Retorna a lista de todos os alunos cadastrados.
 
-- **DELETE /api/alunos/:id**
-  - Exclui um aluno específico.
-  - Parâmetros:
-    - `id`: O ID do aluno.
+- **POST (/)**
+  - *Descrição:* Cria um novo aluno com os dados fornecidos no corpo da requisição.
 
-## Requisitos
+## Rota /alunos/:id
 
-- **Linguagem de Programação:** JavaScript
-- **Banco de Dados:** MariaDB
+- **GET (/:id)**
+  - *Descrição:* Retorna os detalhes de um aluno específico com base no ID fornecido.
 
-## Dependências
+- **PUT (/:id)**
+  - *Descrição:* Atualiza os dados de um aluno específico com base no ID fornecido.
 
-As seguintes dependências estão sendo utilizadas para o desenvolvimento da API:
+- **DELETE (/:id)**
+  - *Descrição:* Exclui um aluno específico com base no ID fornecido.
 
-**Dev Dependencies:**
+## Rota /users
 
-- express
-- nodemon
-- prettier
-- sequelize-cli
-- sucrase
+- **GET (/)**
+  - *Descrição:* Retorna a lista de todos os usuários cadastrados.
 
-**Dependencies:**
+- **POST (/)**
+  - *Descrição:* Cria um novo usuário com os dados fornecidos no corpo da requisição.
 
-- bcryptjs
-- cors
-- helmet
-- jsonwebtoken
-- mariadb
-- multer
-- sequelize
+## Rota /users/:id
 
-## Como Usar
+- **GET (/:id)**
+  - *Descrição:* Retorna os detalhes de um usuário específico com base no ID fornecido.
 
-1. Clone este repositório para sua máquina local.
+- **PUT (/)**
+  - *Descrição:* Atualiza os dados do usuário autenticado.
 
-2. Instale as dependências necessárias usando `npm install`.
+- **DELETE (/)**
+  - *Descrição:* Exclui o usuário autenticado.
 
-3. Configure as variáveis de ambiente no arquivo `.env` para conexão com o banco de dados, chaves secretas etc.
+## Rota /tokens
 
-4. Execute a aplicação usando `npm start`.
-
-## Contribuição
-
-Contribuições são bem-vindas! Se você gostaria de adicionar novas funcionalidades, corrigir bugs ou melhorar a documentação, siga os passos abaixo:
-
-1. Faça um fork deste repositório.
-
-2. Crie um branch para suas modificações:
-
-3. Faça suas modificações e commit:
-
-4. Envie um pull request para este repositório.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Foi desenvolvido por Erick Staviasz durante o curso de JavaScript e TypeScript ministrado por Otávio Miranda.
-
-## Contato
-
-Se você tiver alguma dúvida ou sugestão, entre em contato com staviasz_developer@outlook.com
+- **POST (/)**
+  - *Descrição:* Gera um token de autenticação com base nas credenciais de e-mail e senha fornecidas.
