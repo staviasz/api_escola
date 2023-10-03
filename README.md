@@ -75,3 +75,5 @@ A API da Escola é uma aplicação desenvolvida para fornecer operações CRUD (
 
 
 ![Imagem](https://raw.githubusercontent.com/staviasz/api_escola/main/Screenshot%20from%202023-10-03%2010-18-26.png)
+
+Link do projeto [https://api-escola.cyclic.cloud/](https://api-escola.cyclic.cloud/)
