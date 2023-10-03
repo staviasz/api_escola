@@ -67,6 +67,8 @@ A API da Escola é uma aplicação desenvolvida para fornecer operações CRUD (
 - **DELETE (/)**
   - *Descrição:* Exclui o usuário autenticado.
 
+![Print]([https://github.com/seu-usuario/seu-repositorio/nome-da-imagem.png](https://res-console.cloudinary.com/drko8mcj9/thumbnails/v1/image/upload/v1696339416/U2NyZWVuc2hvdF9mcm9tXzIwMjMtMTAtMDNfMTAtMTgtMjZfdHZ4dWho/as_is)https://res-console.cloudinary.com/drko8mcj9/thumbnails/v1/image/upload/v1696339416/U2NyZWVuc2hvdF9mcm9tXzIwMjMtMTAtMDNfMTAtMTgtMjZfdHZ4dWho/as_is)
+
 ## Rota /tokens
 
 - **POST (/)**
